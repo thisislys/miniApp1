@@ -1,0 +1,1 @@
+{"questions_stem":"```\nfunction swap(a , b) {  \n  return [a,b];\n}\nvar a = 2, b = 4;\nswap(a, b); // 4, 2\n```","questions_answer":"```\nfunction swap(a , b) {  \n  b = b - a;\n  a = a + b;\n  b = a - b;\n  return [a,b];\n}\nvar a = 2, b = 4;\nswap(a, b); // 4, 2\n```","questions_id":"in5k9-nqedo7-cjpek-30cmi"}

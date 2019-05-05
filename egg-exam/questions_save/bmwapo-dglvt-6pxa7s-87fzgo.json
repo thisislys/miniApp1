@@ -1,0 +1,1 @@
+{"questions_stem":"编写一个函数，用来计算两个数字的和！！","questions_answer":"```\nfunction add (a,b){\n  return a + b;\n}\n\n```","questions_id":"bmwapo-dglvt-6pxa7s-87fzgo"}

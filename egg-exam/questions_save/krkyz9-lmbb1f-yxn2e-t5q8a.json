@@ -1,0 +1,1 @@
+{"questions_stem":"* 下面的输出结果是什么？\n```\nvar salary = \"1000$\";\n(function () {\n  console.log('Original salary was' + salary);\n  var salary = \"5000$\"\n  console.log('My New Salary ' + salary)\n})()\n```","questions_answer":"* Original salary wasundefined\n* My New Salary 5000$","questions_id":"krkyz9-lmbb1f-yxn2e-t5q8a"}

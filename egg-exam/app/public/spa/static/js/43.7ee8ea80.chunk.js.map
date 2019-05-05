@@ -1,0 +1,1 @@
+{"version":3,"sources":["model/addMenu/index.js"],"names":["__webpack_require__","r","__webpack_exports__","namespace","state"],"mappings":"2FAAAA,EAAAC,EAAAC,GAAeA,EAAA,SACXC,UAAU,UACVC,MAAM","file":"static/js/43.7ee8ea80.chunk.js","sourcesContent":["export default {\n    namespace:'addMenu',\n    state:{}\n}"],"sourceRoot":""}

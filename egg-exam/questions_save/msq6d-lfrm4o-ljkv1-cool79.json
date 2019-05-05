@@ -1,0 +1,1 @@
+{"questions_stem":"* 求以下的输出结果\n```\n  var foo = 1;\n  function Print() {  \n    var foo;\n    console.log(foo);\n    foo = 2;\n    console.log(foo)\n  }\n  Print()\n```","questions_answer":"2","questions_id":"msq6d-lfrm4o-ljkv1-cool79"}

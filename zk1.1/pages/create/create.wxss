@@ -1,0 +1,19 @@
+/* pages/create/create.wxss */
+
+.li {
+  display: flex;
+  height: 300rpx;
+  width: 100%;
+}
+
+.li image {
+  margin: 20rpx;
+  height: 200rpx;
+  width: 200rpx;
+}
+
+.li text {
+  display: block;
+  height: 75rpx;
+  line-height: 75rpx;
+}

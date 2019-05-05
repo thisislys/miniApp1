@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人管理</title>
+    <link rel="stylesheet" href="../assert/layui/css/layui.css" />
+    <style>
+        .wrapper {
+            width: 50%;
+            min-width: 300px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layui-tab wrapper">
+        <ul class="layui-tab-title">
+            <li class="layui-this">添加教室</li>
+            <li>添加班级</li>
+            <li>设定班级和课程</li>
+        </ul>
+        <div class="layui-tab-content">
+            <!-- 添加教室 -->
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form" action="###">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">教室号</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="room_text" required lay-verify="required" placeholder="请输入教室号"
+                                autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="formRoom">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- 添加班级 -->
+            <div class="layui-tab-item">
+                <form class="layui-form" action="###">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">班级名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="grade_name" required lay-verify="required" placeholder="请输入班级名称"
+                                autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">选择教室号</label>
+                        <div class="layui-input-block">
+                            <select id="room" name="room_id" lay-verify="required"></select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="formGrade">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- 设定班级和课程 -->
+            <div class="layui-tab-item">
+                <form class="layui-form" action="###">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">选择班级</label>
+                        <div class="layui-input-block">
+                            <select id="grade" name="subject_id" lay-verify="required"></select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">选择课程</label>
+                        <div class="layui-input-block">
+                            <select id="subject" name="subject_id" lay-verify="required"></select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="formGrade">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- 表格展示 -->
+        <!-- 所有的教室 -->
+        <table class="layui-table">
+            <colgroup>
+                <col width="150">
+                <col width="200">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>班级</th>
+                    <th>教室号</th>
+                </tr>
+            </thead>
+            <tbody id="roomData"></tbody>
+        </table>
+    </div>
+    <script src="../assert/layui/layui.js"></script>
+    <script src="../assert/request.js"></script>
+    <script>
+        layui.use(['element', 'form'], function () {
+            let element = layui.element;
+            let form = layui.form;
+            // 获取所有的教室号
+            request('/manger/room').then(data => {
+                if (data.code !== 1) {
+                    return;
+                }
+                let optionStr = data.data.map(item => {
+                    return `<option value="${item.room_id}">${item.room_text}</option>`
+                });
+                this.$('#room').html(optionStr);
+                form.render('select');
+                request('/manger/grade').then(grades=>{
+                    if(grades.code === 1){
+                        grades = grades.data;
+                        grades = grades.map(item=>{
+                            let obj = data.data.find(val=>val.room_id === item.room_id)
+                            let room_text = '';
+                            if(obj){
+                                room_text = obj.room_text;
+                            }
+                            return {...item,room_text}
+                        });
+                        grades = grades.map(item=>{
+                            return `<tr>
+                                <td>${item.grade_name}</td>    
+                                <td>${item.room_text}</td>        
+                            </tr>`
+                        });
+                        this.$('#roomData').html(grades);
+                    }
+                })
+            });
+            // 获取所有的课程
+            request('/exam/subject').then(data=>{
+                if(data.code === 1){
+                    let optStr = data.data.map(item => {
+                        return `<option value="${item.subject_id}">${item.subject_text}</option>`
+                    });
+                    this.$('#subject').html(optStr);
+                    form.render('select');
+                }
+            });
+            // 获取所有的班级
+            request('/manger/grade').then(data=>{
+                if(data.code === 1){
+                    let htmlStr = data.data.map(item=>{
+                        return `<option value="${item.grade_id}">${item.grade_name}</option>`
+                    });
+                    this.$('#grade').html(htmlStr);
+                    form.render('select');
+                }
+            })
+            // 添加教室
+            form.on('submit(formRoom)', function (data) {
+                request('/manger/room', {
+                    method: 'POST',
+                    body: data.field
+                }).then(data => alert(data.msg));
+                return false;
+            });
+            // 添加班级
+            form.on('submit(formGrade)', function (data) {
+                request('/manger/grade', {
+                    method: 'POST',
+                    body: data.field
+                }).then(data => alert(data.msg));
+                return false;
+            })
+
+            // 查看所有的学生
+            request('/manger/student').then(data=>{
+                console.log(data);
+            })
+            
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false
+	},
+	"miniprogramRoot": "dist/wx/",
+	"compileType": "miniprogram",
+	"appid": "touristappid",
+	"projectname": "demoa",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 1,
+			"list": [
+				{
+					"id": -1,
+					"name": "搜索关键字",
+					"pathName": "pages/search/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "详情列表",
+					"pathName": "pages/searchList/main",
+					"query": "pageNum=1&kw=\"口红\"&pageSize=10&userId=0",
+					"scene": null
+				}
+			]
+		}
+	}
+}

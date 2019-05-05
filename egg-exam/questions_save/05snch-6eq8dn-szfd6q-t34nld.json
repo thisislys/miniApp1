@@ -1,0 +1,1 @@
+{"questions_stem":"## 控制元素显示隐藏的指令v-if与v-show之间的区别及适用场景？","questions_answer":"### 区别\n- v-show本质就是切换元素display属性控制显示隐藏\n- v-if本质是通过动态的添加DOM和删除DOM来控制显示与隐藏\n\n### 应用场景\n- v-show适合元素经常切换的场景，初次渲染消耗高，后续切换消耗低\n- v-if适合元素不会经常切换的场景，初次渲染消耗低，后续切换消耗高","questions_id":"05snch-6eq8dn-szfd6q-t34nld"}

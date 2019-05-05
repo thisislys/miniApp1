@@ -1,0 +1,1 @@
+{"questions_stem":"## 多种组件创建方式及其区别？","questions_answer":"React创建组件的方式：\n- es5 createClass\n- es6 函数式组件function，没有生命周期，没有state，常用于视图组件\n- es6 class组件，有生命周期和state，常用于容器组件","questions_id":"cbssqf-16avt7-qwk8k-ufilrc"}

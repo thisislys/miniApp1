@@ -1,0 +1,30 @@
+{
+  "name": "egg-exam",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "egg-bin dev",
+    "test": "egg-bin test --title=egg-exam",
+    "start": "egg-scripts start --daemon --title=egg-exam",
+    "stop": "egg-scripts stop"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "egg": "^2.14.2",
+    "egg-alinode": "^2.0.1",
+    "egg-mysql": "^3.0.0",
+    "egg-scripts": "^2.11.0",
+    "egg-validate": "^2.0.2",
+    "install": "^0.12.2",
+    "jsonwebtoken": "^8.4.0",
+    "markdown-it": "^8.4.2",
+    "monaco-editor": "^0.14.3",
+    "node-xlsx": "^0.12.1"
+  },
+  "devDependencies": {
+    "egg-bin": "^4.10.0",
+    "egg-mock": "^3.21.0"
+  }
+}

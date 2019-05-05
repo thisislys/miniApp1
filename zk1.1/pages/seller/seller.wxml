@@ -1,0 +1,25 @@
+<view class='body'>
+  <view wx:key="{{idx}}" class='li' wx:for="{{array}}">
+    <image src="{{item.img}}"></image>
+    <view>
+      <text>{{item.tit}}</text>
+      <text>{{item.pic}}</text>
+      <text>{{item.type}}</text>
+    </view>
+    <view class='btn'>
+      <view wx:if="{{item.flag}}">
+        <text bindtap="click" data-item="{{item}}">-</text>
+      </view>
+      <view wx:else>
+        <text bindtap="click" data-item="{{item}}">+</text>
+      </view>
+  </view>
+
+</view>
+</view>
+
+<view class='foot'>
+  <text bindtap="bindViewTap">
+    确认添加
+  </text>
+</view>

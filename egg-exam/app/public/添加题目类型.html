@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .types .more{
+            display:none;
+        }
+        .types .show{
+            display:block;
+        }
+    </style>
+</head>
+<body>
+    <form action="/exam/insertQuestionsType" method="GET">
+        <input type="text" placeholder="请输入题目的类型" />
+        <input type="number" placeholder="请输入题目的序号" />
+        <input type="button" value="添加" />
+    </form>
+    <ul class="types">
+
+    </ul>
+    <script>
+        let btn = document.querySelector('input[type=button]');
+        let oText = document.querySelector('input[type=text]');
+        let oSort = document.querySelector('input[type=number]');
+        let oTypes = document.querySelector('.types');
+        btn.onclick = ()=>{
+            let text = oText.value;
+            let sort = oSort.value;
+            fetch('/exam/insertQuestionsType?text='+text+'&sort='+sort).then(res=>res.json()).then(data=>{
+                console.log(data);
+                
+                alert(data.msg);
+                
+                location.reload();
+            })
+        }
+        fetch('/exam/getQuestionsType').then(res=>res.json()).then(data=>{
+            console.log(data);
+            oTypes.innerHTML = renderQuestionsType(data.data);
+
+        });
+        function renderQuestionsType(data){
+            return data.map(item=>{
+                return `<li data-typeid="${item.questions_type_id}" data-sort="${item.questions_type_sort}">
+                        <span class="text">${item.questions_type_text}</span>
+                        <div class="more">
+                            <p>题目序号:${item.questions_type_sort}</p> 
+                            <p>题目id:${item.questions_type_id}</p> 
+                        </div>
+                        <i class="del">X</i>
+                    </li>`
+            }).join('');
+        }
+        oTypes.addEventListener('click',ev=>{
+            if(ev.target.className === 'text'){
+                ev.target.nextElementSibling.classList.toggle('show');
+            }
+            if(ev.target.className === 'del'){
+                let id = ev.target.parentNode.dataset.typeid;
+                fetch('/exam/delQuestionsType',{
+                    method:'POST',
+                    body:JSON.stringify({id}),
+                    headers:{'content-type':'application/json'}
+                }).then(res=>res.json()).then(data=>{
+                    console.log(data);
+                    if(data.code === 1){
+                        alert(data.msg)
+                        ev.target.parentNode.parentNode.removeChild(ev.target.parentNode);
+                    }else{
+                        alert(data.msg);
+                    }
+                })
+            }
+        },false)
+    </script>
+</body>
+</html>

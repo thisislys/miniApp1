@@ -1,0 +1,1 @@
+{"questions_stem":"computed 和 watch 区别?\n\n\n\n\n\n\n\n\n\n\n\n","questions_answer":"computed 是计算属性，依赖其他属性计算值，并且 computed 的值有缓存，只有当计算值变化才会返回内容。\n\nwatch 监听到值的变化就会执行回调，在回调中可以进行一些逻辑操作。\n\n所以一般来说需要依赖别的属性来动态获得值的时候可以使用 computed，对于监听到值的变化需要做一些复杂业务逻辑的情况可以使用 watch。\n\n","questions_id":"joo9h2-q79phw-pskuido-ua4t7k"}

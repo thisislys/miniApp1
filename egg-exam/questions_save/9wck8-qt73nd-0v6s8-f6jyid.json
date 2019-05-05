@@ -1,0 +1,1 @@
+{"questions_stem":"## 阅读如下代码，写出代码的功能，输入和输出\n```js\nVue.filter('toThousandFilter', function(num){\n  return (+num || 0).toString().replace(/^-?\\d+/g, m => m.replace(/(?=(?!\\b)(\\d{3})+$)/g, ','))\n});\n```","questions_answer":"# 声明Vue全局过滤器toThousandFilter\n- 功能：把num添加千分符\n- 输入：num\n- 输出：添加千分符之后的num","questions_id":"9wck8-qt73nd-0v6s8-f6jyid"}

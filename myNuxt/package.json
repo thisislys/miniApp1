@@ -1,0 +1,23 @@
+{
+  "name": "myNuxt",
+  "version": "1.0.0",
+  "description": "My bee&#39;s knees Nuxt.js project",
+  "author": "lylylyly",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "post-update": "yarn upgrade --latest"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cross-env": "^5.2.0",
+    "element-ui": "^2.4.11",
+    "nuxt": "latest"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}

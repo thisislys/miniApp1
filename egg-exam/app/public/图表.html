@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图标</title>
+    <style>
+        h1{
+            text-align:center;
+        }
+        #demo1{
+            height:400px; width:600px; margin:0 auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>高薪分布图-柱状图</h1>
+    <div id="demo1"></div>
+    <script src="https://cdn.bootcss.com/echarts/4.2.0-rc.2/echarts.min.js"></script>
+    <script src="demo1.js"></script>
+    <script>
+        let myEchart = echarts.init(document.getElementById('demo1'));
+        myEchart.setOption(demo1Options);
+    </script>
+</body>
+</html>

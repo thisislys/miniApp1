@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>学生管理接口测试</title>
+</head>
+<body>
+    <button id="login">学生登录</button>
+    <button id="add">学生添加</button>
+    <button id="edit">学生修改</button>
+    <button id="del">删除学生</button>
+    <button id="addRoom">创建教室</button>
+    <button id="editRoom">修改教室</button>
+    <button id="delRoom">删除教室</button>
+    <button id="addGrade">创建班级</button>
+    <button id="updateGrade">更新班级</button>
+    <button id="delGrade">删除班级</button>
+    <button id="allStudent">所有学生</button>
+    <button id="allGrade">所有班级</button>
+    <button id="allRoom">所有教室</button>
+    <script>
+        let oBtnLogin = document.getElementById('login');
+        let oBtnAdd = document.getElementById('add');
+        let oBtnEdit = document.getElementById('edit');
+        let oBtnDel = document.getElementById('del');
+        let oBtnAddRoom = document.getElementById('addRoom');
+        let oBtnEditRoom = document.getElementById('editRoom');
+        let oBtnDelRoom = document.getElementById('delRoom');
+        let oBtnAddGrade = document.getElementById('addGrade');
+        let oBtnUpdateGrade = document.getElementById('updateGrade');
+        let oBtnDelGrade = document.getElementById('delGrade');
+        let oAllStudent = document.getElementById('allStudent');
+        let oAllGrade = document.getElementById('allGrade');
+        let oAllRoom = document.getElementById('allRoom');
+        oBtnLogin.onclick = () => {
+            fetch('/student/login',{
+                headers:{
+                    'Content-type':'application/json'
+                },
+                method:'POST',
+                body:JSON.stringify({student_id:'7890',student_pwd:'Peach0126!'})
+            }).then(res => res.text()).then(data => console.log(data));
+        }
+        oBtnAdd.onclick = () => {
+            fetch('/manger/student',{
+                headers:{
+                    'Content-type':'application/json'
+                },
+                method:'POST',
+                body:JSON.stringify({student_id:'456789',student_pwd:'Peach0126!',student_name:'小明 '})
+            }).then(res=>res.json()).then(data=>console.log(JSON.stringify(data)));
+        }
+        oBtnEdit.onclick = () => {
+            fetch('/manger/student/edit',{
+                headers:{
+                    'Content-type':'application/json'
+                },
+                method:'PUT',
+                body:JSON.stringify({student_id:'456789',student_name:'小红'})
+            }).then(res=>res.json()).then(data=>console.log(JSON.stringify(data)));
+        }
+        oBtnDel.onclick = () => {
+            fetch('/manger/student/456789',{
+                headers:{
+                    'Content-type':'application/json'
+                },
+                method:'DELETE'
+            }).then(res=>res.json()).then(data=>console.log(JSON.stringify(data)));
+        }
+        oBtnAddRoom.onclick = () => {
+            fetch('/manger/room',{
+                headers:{
+                    'Content-type':'application/json'
+                },
+                method:'POST',
+                body:JSON.stringify({room_text:'33410'})
+            }).then(res=>res.json()).then(data=>console.log(JSON.stringify(data)));
+        }
+        oBtnEditRoom.onclick = () => {
+            fetch('/manger/room/update',{
+                headers:{
+                    'Content-type':'application/json'
+                },
+                method:'PUT',
+                body:JSON.stringify({room_id:'8fzsx2-cc5s5l-a3j8cq-4fa82p',room_text:'35313'})
+            }).then(res=>res.json()).then(data=>console.log(JSON.stringify(data)));
+        }
+        oBtnDelRoom.onclick = () => {
+            fetch('/manger/room/delete',{
+                headers:{
+                    'Content-type':'application/json'
+                },
+                method:'DELETE',
+                body:JSON.stringify({room_id:'vmj6sk-oko15j-xk952o-5y5b8c'})
+            }).then(res=>res.json()).then(data=>console.log(JSON.stringify(data)));
+        }
+        oBtnAddGrade.onclick = () => {
+            fetch('/manger/grade',{
+                headers:{
+                    'Content-type':'application/json'
+                },
+                method:'POST',
+                body:JSON.stringify({grade_name:'1609A'})
+            }).then(res=>res.json()).then(data=>console.log(data));
+        }
+        oBtnUpdateGrade.onclick = () => {
+            fetch('/manger/grade/update',{
+                headers:{
+                    'Content-type':'application/json'
+                },
+                method:'PUT',
+                body:JSON.stringify({grade_name:'1609D',grade_id:'t8ubfs-4zkz-13405b-3lhfnn'})
+            }).then(res=>res.json()).then(data=>console.log(JSON.stringify(data)));
+        }
+        oBtnDelGrade.onclick = () => {
+            fetch('/manger/grade/delete',{
+                headers:{
+                    'Content-type':'application/json'
+                },
+                method:'DELETE',
+                body:JSON.stringify({grade_id:'t8ubfs-4zkz-13405b-3lhfnn'})
+            }).then(res=>res.json()).then(data=>console.log(data));
+        }
+        oAllStudent.onclick = () => {
+            fetch('/manger/student').then(res=>res.json()).then(data=>console.log(data));
+        }
+        oAllRoom.onclick = () => {
+            fetch('/manger/room').then(res=>res.json()).then(data=>console.log(data));
+        }
+        oAllGrade.onclick = () => {
+            fetch('/manger/grade').then(res=>res.json()).then(data=>console.log(data));
+        }
+    </script>
+</body>
+</html>

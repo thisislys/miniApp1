@@ -1,0 +1,1 @@
+{"questions_stem":"  var a = 100;\n    function test(){\n        console.log(a);\n        var a = 10;\n        console.log(a);\n    }\n    test();","questions_answer":"undefined  \n10 ","questions_id":"rxshnn-047w4-ewo3y9-mw13zh"}

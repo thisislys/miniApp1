@@ -1,0 +1,1 @@
+{"questions_stem":"请简述node环境下的commonjs规范（说出如何导出模块，如何引入模块，如何创建模块）？","questions_answer":"node环境下的commonjs规范：\n\n1. 一份js文件就是一个模块，因此创建一份js文件，就相当于创建了一个模块。\n\n2. 在js文件中使用module.exports或者exports导出模块，nodejs实现的该机制中，查找导出模块，其实查找的是module.exports这个对象，但是module.exports和exports之间存在   module.exports === exports结果为true的关系。\n\n3. 使用require这个方法引入模块；","questions_id":"ayf32j-5kv76-qvfqh-cigaoo"}

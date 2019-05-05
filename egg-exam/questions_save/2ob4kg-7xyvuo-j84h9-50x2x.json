@@ -1,0 +1,1 @@
+{"questions_stem":"前编写一个函数，用来计算两个数字的差","questions_answer":"```\nfunction dis(a,b){\n  return a - b;\n}\n```","questions_id":"2ob4kg-7xyvuo-j84h9-50x2x"}

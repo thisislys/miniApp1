@@ -1,0 +1,13 @@
+
+<text bindtap="bindViewTap">
+创建投票
+</text>
+<block wx:if="{{list.length}}">
+<text>我创建的投票</text>
+  <view wx:key="{{idx}}" wx:for="{{list}}">
+    <view class='li'>
+      <text>投票{{item.count}}</text>
+      <text>{{item.time}}</text>
+    </view>
+  </view>
+</block>

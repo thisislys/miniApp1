@@ -1,0 +1,1 @@
+{"questions_stem":"## 谈谈Vue中v-for指令里key的作用？","questions_answer":"- 使用v-for更新已渲染的元素列表时,默认用就地复用策略;\n- 列表数据修改的时候,他会根据key值去判断某个值是否修改,如果修改,则重新渲染这一项,否则复用之前的元素;\n- 在项目开发中，不推荐使用数组下标做key而是用每条数据中不会变的id。","questions_id":"00o5nwy-qw7jj-ko6qkb-4uwrhv"}

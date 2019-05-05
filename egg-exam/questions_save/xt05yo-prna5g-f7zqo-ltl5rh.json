@@ -1,0 +1,1 @@
+{"questions_stem":"# react常用生命周期图\n\n![alt](https://raw.githubusercontent.com/JackCrysler/react-start/master/1.png)\n\n如图是react常用生命周期图，请阅读图，并在1，2，3，4处填写对应的生命周期","questions_answer":"1. shouldComponentUpdate\n2. componentDidmount\n3. componentDidUpdate","questions_id":"xt05yo-prna5g-f7zqo-ltl5rh"}

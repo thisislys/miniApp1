@@ -1,0 +1,1 @@
+{"questions_stem":"在声明变量的时候，使用`let`和`var`有什么区别呢？","questions_answer":"回答出以下几点就算正确：\n\n1. let不可以重复声明变量\n2. let声明的变量不会有变量提升\n3. let声明的变量在遇到`{}`的时候就是局部的变量,而`var`声明的变量只有在函数的内部才是局部的变量。\n4. let声明的变量在函数内部会出现暂时性死区","questions_id":"h7f6hq-cezl0g-fyu3o-6onwjf"}

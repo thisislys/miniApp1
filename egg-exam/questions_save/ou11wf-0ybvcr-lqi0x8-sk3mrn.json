@@ -1,0 +1,1 @@
+{"questions_stem":"编写一个函数，用来计算阶乘","questions_answer":"```js\nfunction jc(num){\n  if(num <= 1){\n    return num;\n  }\n  return num * jc(num-1)\n}\n\n```","questions_id":"ou11wf-0ybvcr-lqi0x8-sk3mrn"}

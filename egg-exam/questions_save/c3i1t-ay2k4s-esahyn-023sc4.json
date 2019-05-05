@@ -1,0 +1,1 @@
+{"questions_stem":"* 阅读以下程序，请输出结果\n```\nvar result = [];\nfunction foo () {\n  for (i = 0; i<3; i++) {\n    result[i] = function () {\n      alert(i)\n    }\n  }\n}\nfoo();\nresult[0]();\nresult[1]();\nresult[2]();\n```","questions_answer":"* 3\n* 3\n* 3","questions_id":"c3i1t-ay2k4s-esahyn-023sc4"}

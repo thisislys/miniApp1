@@ -1,0 +1,16 @@
+<text bindtap="seller">添加喜欢的餐厅</text>
+<view>
+  <view wx:if="{{array.length}}">
+    <view class='li' wx:key="{{idx}}" wx:for="{{array}}">
+     
+        <image src="{{item.img}}"></image>
+        <view>
+          <text>{{item.tit}}</text>
+          <text>{{item.pic}}</text>
+          <text>{{item.type}}</text>
+        </view>
+    </view>
+  </view>
+
+</view>
+<text bindtap="create">生成投票</text>

@@ -1,0 +1,12 @@
+/* pages/home/home.wxss */
+.li{
+  height: 100rpx;
+  line-height: 100rpx;
+  width: 94%;
+  border: 1rpx solid #ccc;
+  border-radius: 12rpx;
+}
+text{
+  padding-left: 30rpx;
+
+}

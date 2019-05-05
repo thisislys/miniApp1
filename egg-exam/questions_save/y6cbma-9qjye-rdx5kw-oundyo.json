@@ -1,0 +1,1 @@
+{"questions_stem":"<button class=\"btn1 active\" />\n<button class=\"btn2\" />\n<button class=\"btn3\" />\n<button class=\"btn4\" />\n\n\n完成active切换的功能，单选","questions_answer":"var btns = document.querySelectAll('button');\n//code","questions_id":"y6cbma-9qjye-rdx5kw-oundyo"}

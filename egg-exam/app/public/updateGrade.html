@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>信息收集</title>
+    <link rel="stylesheet" href="./assert/layui/css/layui.css" />
+    <style>
+        .wrapper{
+            width:30%; margin:20px auto; min-width:500px;
+        }
+        .wrapper p{
+            color:red; text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <form class="layui-form" action="###">
+            <div class="layui-form-item">
+                <label class="layui-form-label">学号</label>
+                <div class="layui-input-block">
+                    <input type="text" name="student_id" required lay-verify="required" placeholder="请输入你的学号"
+                        autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">选择班级</label>
+                <div class="layui-input-block">
+                    <select id="grade" name="grade_id" lay-verify="required"></select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+        <p>提示：请正确填写个人信息，自行设置密码，该密码为以后登录考试平台的密码，请牢记！！</p>
+    </div>
+
+    <script src="./assert/layui/layui.js"></script>
+    <script src="./assert/request.js"></script>
+    <script>
+        //Demo
+        layui.use('form', function () {
+            let form = layui.form;
+            // 监听密码框的聚焦和失去焦点
+            let oPwd = this.$('#pwd');
+            oPwd.on('focus',() => {
+                oPwd.attr('type','password')
+            })
+            oPwd.on('onblur',() => {
+                oPwd.attr('type','text');
+            });
+
+            // 验证密码
+            form.verify({
+                userpwd(value,item){
+                    let userpwdReg = /^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$/
+                    if(!userpwdReg.test(value)){
+                        return '密码不符合规则'
+                    }
+                }
+            })
+            // 获取所有的班级
+            request('/manger/grade').then(data=>{
+                let oSelect = this.$('#grade');
+                if(data.code === 1){
+                    let optionStr = data.data.map(item => `<option value="${item.grade_id}">${item.grade_name}</option>`).join('');
+                    oSelect.html(optionStr);
+                    form.render('select');
+                }
+            })
+            //监听提交
+            form.on('submit(formDemo)', function (data) {
+                request('/manger/student/edit',{
+                    method:'PUT',
+                    body:data.field
+                }).then(data=>{
+                    alert(data.msg);
+                })
+                return false;
+            });
+        });
+    </script>
+</body>
+
+</html>
